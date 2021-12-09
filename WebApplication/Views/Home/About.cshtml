@@ -1,0 +1,33 @@
+﻿@{
+    var list = ViewBag.list;
+    var r = ViewBag.r;
+    var page = 1;
+    int totalPage = ViewBag.totalPage;
+
+    if (ViewBag.page == null) { page = 1; }
+    else { page = ViewBag.page; }
+}
+
+<div class="row">
+    @foreach (var o in list)
+    {
+        <div>
+            <h2>@o["업소명"]</h2>
+            <div>
+                <span><b>소재지(지번)</b> : @o["소재지(지번)"]</span>
+                <span>/ <b>소재지전화번호</b> : @o["소재지전화번호"]</span>
+                <span>/ <b>업태명</b> : @o["업태명"]</span>
+                <span>/ <b>주취급음식</b> : @o["주취급음식"]</span>
+            </div>
+        </div>
+    }
+</div>
+<br />
+<span>@page / @totalPage 페이지</span>
+<a href="@Url.Action("About", new { page = page - 1 <= 0 ? totalPage : page - 1 })">이전</a>
+<a href="@Url.Action("About", new { page = page + 1 > totalPage ? 1 : page + 1 })">다음</a>
+<br />
+<form action="@Url.Action("About")" method="get">
+    <input type="number" id="page" name="page" placeholder="페이지 번호입력"/>
+    <input type="submit" value="이동" />
+</form>

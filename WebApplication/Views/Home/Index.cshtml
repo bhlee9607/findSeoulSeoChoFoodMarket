@@ -1,0 +1,18 @@
+﻿@{
+    var shuffle = ViewBag.shuffle;
+    
+}
+
+<div class="row">
+    <div>
+        <h2>@shuffle["업소명"]</h2>
+        <div>
+            <span><b>소재지(지번)</b> : @shuffle["소재지(지번)"]</span>
+            <span>/ <b>소재지전화번호</b> : @shuffle["소재지전화번호"]</span>
+            <span>/ <b>업태명</b> : @shuffle["업태명"]</span>
+            <span>/ <b>주취급음식</b> : @shuffle["주취급음식"]</span>
+        </div>
+    </div>
+</div>
+<br />
+<a href="@Url.Action("Index")">랜덤 뽑기</a>
